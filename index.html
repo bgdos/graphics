@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Column Chart</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="charts.js"></script>
+        <script src="functions.js"></script>
+        <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
+    </head>
+    <body>
+        <container>
+            <div>
+                <h1>Chart Values</h1>
+                <input type="number" placeholder="Value" id="value1" onfocus="enterButton('create')">
+                <input type="number" placeholder="Value" id="value2" onfocus="enterButton('create')">
+                <input type="number" placeholder="Value" id="value3" onfocus="enterButton('create')">
+                <input type="number" placeholder="Value" id="value4" onfocus="enterButton('create')">
+                <input type="number" placeholder="Value" id="value5" onfocus="enterButton('create')"><br>
+                <input type="checkbox" id="zero" value="Use Zero">Use zero as minimum<br>
+                <input type="button" value="Create Graphic" onclick="makeGraphics()" id="create">
+            </div>
+            <div>
+                <h1>Column Chart</h1>
+                <svg id="columns" viewBox="0 0 50 360" preserveAspectRatio="xMinYMid meet"></svg><br>
+<!--
+                <input type="button" value="Export" onclick="exportToImage()">
+                <canvas id='canvas'></canvas>
+-->
+                <h3>Chart Data</h3>
+                <textarea id="datasheet" readonly></textarea>
+            </div>
+        </container>
+    </body>
+</html>
