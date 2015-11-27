@@ -4,7 +4,10 @@
         <meta charset="utf-8">
         <title>Column Chart</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="js.css">
         <script src="charts.js"></script>
+        <script src="svg.js"></script>
+        <script src="js.js"></script>
         <script src="functions.js"></script>
         <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
     </head>
@@ -12,24 +15,46 @@
         <container>
             <div>
                 <h1>Chart Values</h1>
-                <input type="number" placeholder="Value" id="value1" onfocus="enterButton('create')">
-                <input type="number" placeholder="Value" id="value2" onfocus="enterButton('create')">
-                <input type="number" placeholder="Value" id="value3" onfocus="enterButton('create')">
-                <input type="number" placeholder="Value" id="value4" onfocus="enterButton('create')">
-                <input type="number" placeholder="Value" id="value5" onfocus="enterButton('create')"><br>
+                <div id="values">
+                    <input type="number" placeholder="Value" id="value1" onfocus="enterButton('create')">
+                    <input type="number" placeholder="Value" id="value2" onfocus="enterButton('create')">
+                    <input type="number" placeholder="Value" id="value3" onfocus="enterButton('create')">
+                    <input type="number" placeholder="Value" id="value4" onfocus="enterButton('create')">
+                    <input type="number" placeholder="Value" id="value5" onfocus="enterButton('create')">
+                    <input type="number" placeholder="Value" id="value6" onfocus="enterButton('create')">
+                </div>
+                <div><input type="button" value="+" onclick="createInput()"></div>
+                <br>
+                Chart Type: <select id="chartType" onchange="checkOptions(this.value)">
+                    <option value="0">--------</option>
+                    <option value="1">Bar</option>
+                    <option value="2">Column</option>
+                    <option value="3">Linear</option>
+                    <option value="4">Pie</option>
+                    <option value="5">Points</option>
+                </select>
+                <input type="text" placeholder="Title Y" id="titleY">
+                <input type="text" placeholder="Title X" id="titleX">
+                <input type="number" placeholder="Average" id="average"><br>
                 <input type="checkbox" id="zero" value="Use Zero">Use zero as minimum<br>
-                <input type="button" value="Create Graphic" onclick="makeGraphics()" id="create">
+                <input type="button" value="Create Graphic" onclick="displayGraphics()" id="create">
             </div>
             <div>
                 <h1>Column Chart</h1>
-                <svg id="columns" viewBox="0 0 50 360" preserveAspectRatio="xMinYMid meet"></svg><br>
-<!--
-                <input type="button" value="Export" onclick="exportToImage()">
+                <svg id="columns" viewBox="0 0 50 360" preserveAspectRatio="xMinYMid meet" style="width:800px; height:450px"></svg><br>
+                <input type="button" value="Export to PNG" onclick="exportToImage()">
                 <canvas id='canvas'></canvas>
--->
-                <h3>Chart Data</h3>
-                <textarea id="datasheet" readonly></textarea>
             </div>
         </container>
     </body>
+    <div class="popup">
+        <div class="info">
+            <a class="cerrar" onclick="closePopup()"></a>
+            <div class="popup-header">
+                <h1 id="popheader"><span id="head-mess"></span></h1>
+            </div>
+            <div id="pop-message">
+            </div>
+        </div>
+	</div>
 </html>
